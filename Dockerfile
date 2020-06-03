@@ -22,4 +22,4 @@ EXPOSE 8000
 
 # COPY . .
 
-CMD node src/server/database/seed/postgres/attractions.js && node src/server/database/seed/postgres/tours.js && node src/server/database/seed/postgres/ToursAttractions.js && node src/server/index.js
+CMD npm start
