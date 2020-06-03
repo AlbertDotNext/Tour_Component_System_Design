@@ -1,0 +1,49 @@
+version: '3'
+services:
+#  web:
+#    build: '.web'
+#    ports:
+#      - "8080:8080"
+
+  itinerary:
+    build: '.'
+    ports:
+      - "80:80"
+    depends_on:
+      - itinerarydb  
+      # When docker.compose creates a network, it will modify the host
+      # files of these services so there is an IP address where you can find all these diff.
+      # containers. They will be given a host name and that will be added to the host file
+      # of the container.  If you hard code the IP address, you are not guaranteed that
+      # that IP address will always be the same, so docker lets you use the name that you gave
+      # as the host. That will resolve in the container to the IP address where you can find
+      # that container. 
+
+    environment:
+      - PORT=3000
+      - SQLPORT=5432
+      - POSTGRES_DB=snaketours
+      - SQLUSER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - SQLHOST=itinerarydb
+      # the reviews service checks if there is a matching environment variable.
+      # because docker compose is going to create an internal network for all its containers.
+
+  itinerarydb:
+    build: './src/server/database'
+    ports:
+      - "5432:5432"
+
+  # the root containers that we use.
+#  nginx:
+#    image: nginx:latest
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - ./web/public:/srv/www/static
+#      - .default.conf:/etc/nginx/conf.d/default.conf
+      # volumes is a way to connect your host machine's file system to the file system of the container
+      # e.g. "hey, go connect the web module (./web/public)  to the container's server/www/static?"
+#    depends_on:
+#      - web
+
