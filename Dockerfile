@@ -4,10 +4,12 @@ COPY . /src
 
 WORKDIR /src
 
-RUN npm install --production
+RUN npm install
 
 EXPOSE 80
 
 CMD npm start
+
+CMD npm run seed
 
 COPY . .

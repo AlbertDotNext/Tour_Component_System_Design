@@ -8,16 +8,16 @@ services:
   itinerary:
     build: '.'
     ports:
-      - "80:80"
+      - "8000:80"
     depends_on:
-      - itinerarydb  
+      - itinerarydb
       # When docker.compose creates a network, it will modify the host
       # files of these services so there is an IP address where you can find all these diff.
       # containers. They will be given a host name and that will be added to the host file
       # of the container.  If you hard code the IP address, you are not guaranteed that
       # that IP address will always be the same, so docker lets you use the name that you gave
       # as the host. That will resolve in the container to the IP address where you can find
-      # that container. 
+      # that container.
 
     environment:
       - PORT=3000
