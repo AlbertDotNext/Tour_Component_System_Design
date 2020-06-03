@@ -8,7 +8,7 @@ services:
   itinerary:
     build: '.'
     ports:
-      - "8000:80"
+      - "8000:8000"
     depends_on:
       - itinerarydb
       # When docker.compose creates a network, it will modify the host

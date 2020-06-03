@@ -1,15 +1,27 @@
 FROM node:latest
 
-COPY . /src
+# COPY . /src
 
-WORKDIR /src
+# WORKDIR /src
+
+# RUN npm install
+
+RUN mkdir -p /src/app
+
+WORKDIR /src/app
+
+COPY . /src/app
 
 RUN npm install
 
-EXPOSE 80
+EXPOSE 8000
 
-CMD npm start
+# CMD npm start
 
-CMD npm run seed
+# CMD npm run seed
 
-COPY . .
+# COPY . .
+
+CMD [ "npm", "start" ]
+
+CMD ["npm", "run", "seed"]
