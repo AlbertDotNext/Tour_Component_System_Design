@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx webpack && jest",
     "seed": "psql -U postgres < src/server/database/dataSchema/postgres.sql",
-    "start": "node src/server/database/seed/postgres/attractions.js && node src/server/database/seed/postgres/tours.js && node src/server/database/seed/postgres/ToursAttractions.js && node src/server/index.js"
+    "start": "node src/server/database/seed/postgres/attractions.js && node src/server/database/seed/postgres/tours.js && node src/server/database/seed/postgres/toursattractions.js && node src/server/index.js"
   },
   "repository": {
     "type": "git",
