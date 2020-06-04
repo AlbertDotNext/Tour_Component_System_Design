@@ -64,39 +64,25 @@ app.get('/tour/', (req, res) => {
     res.end(JSON.stringify(data));
   });
 });
-// app.get('/tour/', (req, res) => {
-//   console.log("Tour route was hit.");
-//   // This route will look up a tour by ID and send the relevant data.
-//   ctlr.getRandomTour((err, data) => {
-//     if (err) {
-//       console.error(err);
-//       res.writeHead(500);
-//       res.end();
-//       return;
-//     }
-//     res.status(200);
-//     res.end(JSON.stringify(data));
-//   });
-// });
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'index.html'));
 });
 
-app.post('/tour', (req, res) => {
-})
+// app.post('/tour', (req, res) => {
+// })
 
-app.post('/attraction', (req, res) => {
-})
+// app.post('/attraction', (req, res) => {
+// })
 
-app.post('/tourAttraction', (req, res) => {
-})
+// app.post('/tourAttraction', (req, res) => {
+// })
 
-app.put('/tour/:id', (req, res) => {
-})
+// app.put('/tour/:id', (req, res) => {
+// })
 
-app.delete('/tour/:id', (req, res) => {
-})
+// app.delete('/tour/:id', (req, res) => {
+// })
 
 
 
