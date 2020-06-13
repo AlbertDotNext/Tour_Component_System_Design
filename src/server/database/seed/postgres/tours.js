@@ -5,13 +5,15 @@ const _ = require('underscore');
 // module.exports = function (models) {
 
 const writeTours = fs.createWriteStream('tours.csv');
-writeTours.write('id,name,overview,cancellation_policy,return_details,created_at,updated_at\n', 'utf8');
+writeTours.write(
+  'id,name,overview,cancellation_policy,return_details,created_at,updated_at\n',
+  'utf8'
+);
 
 // const randomReviewId = () => Math.floor(Math.random() * Math.floor(100));
 
-
 const writeOneMillion = (writer, encoding, callback) => {
-  let i = 100000;
+  let i = 1000000;
   let id = 0;
 
   const cancellationPolicies = [
@@ -27,13 +29,39 @@ const writeOneMillion = (writer, encoding, callback) => {
     'The rendezvous will be disclosed by carrier pigeon',
   ];
 
-  const lead = ['Enjoy A', 'Go On A', 'Take A', 'Beautiful', 'Windy', 'Wonderful', 'Starlight', 'Chaperoned', 'Virtual'];
-  const conveyance = ['Walking', 'Beautiful', 'Bus', 'Bike', 'Hiking', 'Go-Kart', 'Wine Tour', 'Daydrinking', 'Strolling'];
+  const lead = [
+    'Enjoy A',
+    'Go On A',
+    'Take A',
+    'Beautiful',
+    'Windy',
+    'Wonderful',
+    'Starlight',
+    'Chaperoned',
+    'Virtual',
+  ];
+  const conveyance = [
+    'Walking',
+    'Beautiful',
+    'Bus',
+    'Bike',
+    'Hiking',
+    'Go-Kart',
+    'Wine Tour',
+    'Daydrinking',
+    'Strolling',
+  ];
   const tourTitleChunk = ['Tour Of', 'Through', 'Across', 'Around'];
-  const localeName = ['San Francisco', 'SF', 'The Big Fran', 'The 7 x 7', 'Bay City'];
+  const localeName = [
+    'San Francisco',
+    'SF',
+    'The Big Fran',
+    'The 7 x 7',
+    'Bay City',
+  ];
 
   function pickrand(array) {
-    const max = array.length -1;
+    const max = array.length - 1;
     const i = _.random(0, max);
     return array[i];
   }
@@ -60,7 +88,7 @@ const writeOneMillion = (writer, encoding, callback) => {
       id += 1;
       // const attraction_id = attraction_idRandom();
       const name = makeTitle();
-      const overview =  faker.lorem.sentences();
+      const overview = faker.lorem.sentences();
       const cancellation_policy = pickrand(cancellationPolicies);
       const return_details = pickrand(returnDetails);
       const created_at = faker.date.past(10);
@@ -83,7 +111,5 @@ writeOneMillion(writeTours, 'utf-8', () => {
   console.log('data generation completed');
   writeTours.end();
 });
-
-
 
 // }

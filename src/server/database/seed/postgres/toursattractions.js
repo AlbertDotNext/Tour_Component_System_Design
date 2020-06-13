@@ -7,12 +7,9 @@ const _ = require('underscore');
 const writeTours = fs.createWriteStream('toursAttractions.csv');
 writeTours.write('created_at,updated_at,attraction_id,tour_id\n', 'utf8');
 
-
 const writeOneMillion = (writer, encoding, callback) => {
-  let i = 500000;
+  let i = 5000000;
   let id = 0;
-
-
 
   const write = () => {
     let ok = true;
@@ -22,7 +19,7 @@ const writeOneMillion = (writer, encoding, callback) => {
       const created_at = faker.date.past();
       const updated_at = faker.date.future();
       const attraction_id = id;
-      const tour_id = faker.random.number(100000);
+      const tour_id = faker.random.number(1000000);
       const data = `${created_at},${updated_at},${attraction_id},${tour_id}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);

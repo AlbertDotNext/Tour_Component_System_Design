@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const ctlr = require('./database/controller');
@@ -29,7 +28,9 @@ cache = (req, res, next) => {
 app.get('/tour/:id', cache, (req, res) => {
   // This route will look up a tour by ID and send the relevant data.
 
-  const { params: { id } } = req;
+  const {
+    params: { id },
+  } = req;
   // this is const id = req.params.id but it's defined using destructuring
   // https://exploringjs.com/impatient-js/ch_destructuring.html#object-destructuring
   ctlr.getTour(id, (err, data) => {
@@ -46,8 +47,8 @@ app.get('/tour/:id', cache, (req, res) => {
   });
 });
 
-app.get('/tour/', (req, res) => {
-  console.log("Tour random route was hit.");
+app.get('/tour/', cache, (req, res) => {
+  console.log('Tour random route was hit.');
   // This route will look up a tour by ID and send the relevant data.
   const id = faker.random.number(100000);
 
@@ -68,22 +69,5 @@ app.get('/tour/', (req, res) => {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'index.html'));
 });
-
-// app.post('/tour', (req, res) => {
-// })
-
-// app.post('/attraction', (req, res) => {
-// })
-
-// app.post('/tourAttraction', (req, res) => {
-// })
-
-// app.put('/tour/:id', (req, res) => {
-// })
-
-// app.delete('/tour/:id', (req, res) => {
-// })
-
-
 
 module.exports = app;
